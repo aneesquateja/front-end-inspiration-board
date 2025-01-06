@@ -16,7 +16,7 @@ const BoardList = ({ boards }) => {
     );
 };
 
-BoardList.prototype = {
+BoardList.propTypes = {
     boards: PropTypes.array.isRequired,
 };
 
