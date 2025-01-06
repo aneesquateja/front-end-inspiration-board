@@ -1,33 +1,43 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Board from './components/Board'
+
+const kbaseURL = '';   // I can Replace with your deployed API URL if needed
+
+const convertFromApi = (apiBoard) => {
+  const newBoard = {
+    id: apiBoard.id,
+    title: apiBoard.title,
+    ownerName: apiBoard.owner,
+  };
+  return newBoard;
+};
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+   // State to manage the list of boards
+  const [boards, setBoards] = useState([]);
+
+  // Function to fetch the list of boards from the API
+  useEffect(() => {
+    axios.get(kbaseURL)
+  const handleAddBoard = (newBoard) => {
+    // Add your board handling logic here
+    console.log('New board:', newBoard);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      < h3>Create a New Board</h3>
+      <main>
+        <br />
+        <div>
+          <Board handleAddBoard={handleAddBoard} />
+          </div>
+      </main>
     </>
   )
 }
