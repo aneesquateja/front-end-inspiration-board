@@ -1,14 +1,4 @@
-// import React, { useState } from 'react';
-// import NewBoardForm from './components/NewBoardForm';
-// import './App.css';
 
-// const App = () => {
-//     const [boards, setBoards] = useState([]);
-
-//     const handleAddBoard = (newBoard) => {
-//         const boardWithId = { ...newBoard, id: boards.length + 1 };
-//         setBoards([...boards, boardWithId]);
-//     };
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -40,26 +30,6 @@ function App() {
     console.log('New board:', newBoard);
   };
 
-//     return (
-//         <div className="App">
-//             <h1>Inspiration Board</h1>
-//             {/* New Board Form */}
-//             <NewBoardForm onAddBoard={handleAddBoard} />
-
-//             {/* Display Added Boards */}
-//             <div className="boards-list">
-//                 <h2>Boards</h2>
-//                 <ul>
-//                     {boards.map((board) => (
-//                         <li key={board.id}>
-//                             <strong>{board.title}</strong> by {board.owner}
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// };
   return (
     <>
       < h3>Create a New Board</h3>
