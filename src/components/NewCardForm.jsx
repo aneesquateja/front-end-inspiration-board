@@ -1,62 +1,34 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-const NewCardForm = (props) => {
-    const { addCard } = props;
+const NewCardForm = ({ onAddCard }) => {
+    const [message, setMessage] = useState("");
 
-    // State to handle the form inputs
-    const [formData, setFormData] = useState({
-        message: "",
-    });
-
-    // Handle input changes
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    // Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        // Only proceed if message and owner are not empty
-        if (formData.message.trim()) {
-            addCard(formData);
-
-            // Clear the form fields
-            setFormData({
-                message: "",
-            });
-        }
+        onAddCard({ message });
+        setMessage("");
     };
 
     return (
-        <form onSubmit={handleSubmit} className="new-card-form">
-            <h2>Add a New Card</h2>
-            <h2>Preview: </h2>
-            <div>
-                <label htmlFor="message">message:</label>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="message">Message:</label>
                 <input
-                    id="message"
-                    name="message"
                     type="text"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Enter card message"
-                    required
+                    id="message"
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
                 />
-            </div>
-            <button type="submit">Add Card</button>
-        </form>
+                <button type="submit">Add Card</button>
+            </form>
+            <p>Preview: {message}</p>
+        </div>
     );
 };
-
-// PropTypes validation
 NewCardForm.propTypes = {
-    addCard: PropTypes.func.isRequired, // Function to add a new card
+    onAddCard: PropTypes.func.isRequired,
 };
 
 export default NewCardForm;
+
