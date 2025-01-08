@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import './NewCardForm.css';
 
 const NewCardForm = ({ onAddCard }) => {
     const [message, setMessage] = useState("");
@@ -11,18 +12,19 @@ const NewCardForm = ({ onAddCard }) => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="message">Message:</label>
+        <div className="form-container">
+            <form onSubmit={handleSubmit} className="new-card-form">
+                <label htmlFor="message">Write your inspiration:</label>
                 <input
                     type="text"
                     id="message"
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
+                    placeholder="Type your message here..."
                 />
-                <button type="submit">Add Card</button>
+                <button type="submit">Add Sticky Note</button>
             </form>
-            <p>Preview: {message}</p>
+            {message && <p className="preview">Preview: {message}</p>}
         </div>
     );
 };

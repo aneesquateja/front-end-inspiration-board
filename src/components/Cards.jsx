@@ -17,7 +17,7 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
                             onClick={() => onDeleteCard(card.id)}
                         >
                             Delete
-                        </button><object data="" type=""></object>
+                        </button>
                         <button 
                             className="like-btn"
                             onClick={() => onLikeCard(card.id)}
@@ -36,7 +36,7 @@ Cards.propTypes = {
         PropTypes.shape({
             id: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
-            likes_count: PropTypes.number.isRequired
+            likes_count: PropTypes.number
         })
     ),
     onDeleteCard: PropTypes.func.isRequired,
