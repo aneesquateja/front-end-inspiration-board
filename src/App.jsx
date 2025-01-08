@@ -98,42 +98,9 @@ const App = () => {
   };
 
   return (
-//     <div>
-//       <h1 className="inspirational-board-title">Inspirational Board</h1>
-//       <div className="left-side-container">
-//         <h2>Boards</h2>
-//         <BoardList boards={boardsData} onBoardSelect={setSelectedBoard} />
-//         </div>
-//         <div className="right-side-container">
-//         {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
-//         <button onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}>
-//           {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
-//         </button>
-//       </div>
 
-//       <div className="delete-all-container">
-//         <p>This is a demo! Please be gentle! <span onClick={deleteAllBoards} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>Click here</span> to delete all boards and cards!</p>
-//       </div>
-      
-//       {selectedBoard && (
-//         <div className="selected-board-container">
-//           <h2>Selected Board: {selectedBoard.title}</h2>
-//           <p>Owner: {selectedBoard.owner}</p>
-//           <NewCardForm onAddCard={addNewCard} />
-//           <div>
-//             <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default App;
-
-<div className="container">
-  <h1 className="inspirational-board-title">Inspirational Board</h1>
-
+<div>
+  <h1>Inspirational Board</h1>
   <div className="board-card-container">
     <div className="left-side-container">
       <h2>Boards</h2>
@@ -163,7 +130,6 @@ const App = () => {
 </div>
  );
  };
- 
  export default App;
 
 
