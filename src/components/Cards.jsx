@@ -1,7 +1,46 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import './Cards.css';
 
 const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
+    const [cardLikes, setCardLikes] = useState({});
+
+    useEffect(() => {
+        const fetchLikes = async () => {
+            try {
+                const promises = cards.map(card => 
+                    axios.get(`http://127.0.0.1:5000/cards/${card.id}`)
+                );
+                const responses = await Promise.all(promises);
+                const likes = {};
+                responses.forEach(response => {
+                    likes[response.data.id] = response.data.likes;
+                });
+                setCardLikes(likes);
+            } catch (error) {
+                console.error('Error fetching likes:', error);
+            }
+        };
+
+        if (cards.length > 0) {
+            fetchLikes();
+        }
+    }, [cards]);
+
+    const handleLike = async (cardId) => {
+        await onLikeCard(cardId);
+        try {
+            const response = await axios.get(`http://127.0.0.1:5000/cards/${cardId}`);
+            setCardLikes(prev => ({
+                ...prev,
+                [cardId]: response.data.likes
+            }));
+        } catch (error) {
+            console.error('Error updating likes:', error);
+        }
+    };
+
     if (!cards || cards.length === 0) {
         return <div className="no-cards">No cards available</div>;
     }
@@ -12,18 +51,13 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
                 <div key={card.id} className="card">
                     <p className="card-message">{card.message}</p>
                     <div className="card-actions">
-                        <button 
-                            className="delete-btn"
-                            onClick={() => onDeleteCard(card.id)}
-                        >
+                        <button className="delete-btn" onClick={() => onDeleteCard(card.id)}>
                         </button>
-                        <button 
-                            className="like-btn"
-                            onClick={() => onLikeCard(card.id)}
-                        >
-                            {/* <span className="like-count">{card.likescount}</span> */}
-                            <span className="like-count">{card.likes || 0}</span>
-
+                        
+                        <button className="like-btn" onClick={() => handleLike(card.id)}>
+                            <span className="like-count">
+                                {cardLikes[card.id] || card.likes || 0}
+                            </span>
                         </button>
                     </div>
                 </div>

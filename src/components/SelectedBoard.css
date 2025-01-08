@@ -1,0 +1,44 @@
+.selected-board {
+    background: #fff;
+    position: relative;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.selected-board h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.selected-board p {
+    color: #666;
+}
+
+.board-header {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.board-header h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+}
+
+.owner {
+    color: #666;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.board-details {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.board-id {
+    margin: 0;
+    font-family: monospace;
+}

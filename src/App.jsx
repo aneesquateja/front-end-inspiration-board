@@ -4,6 +4,7 @@ import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Cards from "./components/Cards";
+import SelectedBoard from "./components/SelectedBoard";
 import "./App.css";
 
 const App = () => {
@@ -99,38 +100,55 @@ const App = () => {
   };
 
   return (
+    <main className="container">
+        <h1 className="inspirational-board-title">Inspirational Board</h1>
+        
+        <section className="left-side-container" aria-label="Board List">
+            <Board 
+                boards={boardsData} 
+                onBoardSelect={setSelectedBoard} 
+            />
+            <div className="board-actions">
+                <button 
+                    className="toggle-form-btn"
+                    onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}
+                >
+                    {isBoardFormVisible ? "Hide Board Form" : "Add New Board"}
+                </button>
+                
+                {boardsData.length > 0 && (
+                    <button 
+                        className="toggle-form-btn"
+                        onClick={deleteAllBoards}
+                        aria-label="Delete all boards"
+                    >
+                        Delete All Boards
+                    </button>
+                )}
+            </div>
+        </section>
 
-<div>
-  <h1>Inspirational Board</h1>
-  <div className="board-card-container">
-    <div className="left-side-container">
-      <Board boards={boardsData} onBoardSelect={setSelectedBoard} />
-    </div>
-    {selectedBoard && (
-      <div className="selected-board-container">
-        <h2>Selected Board: {selectedBoard.title}</h2>
-      <div className="right-side-container">
-        <p>Owner: {selectedBoard.owner}</p>
-        <NewCardForm onAddCard={addNewCard} />
-        <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
-      </div>
-      </div>
-    )}
+        <section className="center-container" aria-label="Selected Board">
+            <SelectedBoard board={selectedBoard} />
+        </section>
 
-    <div className="right-side-container">
-      {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
-      <button onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}>
-        {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
-      </button>
-    </div>
-  </div>
+        <section className="right-side-container" aria-label="New Board Form">
+            {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
+        </section>
 
-  <div className="delete-all-container">
-    <p>This is a demo! Please be gentle! <span onClick={deleteAllBoards} style={{ cursor: 'pointer', textDecoration: 'underline' }}>Click here</span> to delete all boards and cards!</p>
-  </div>
-</div>
- );
- };
- export default App;
+        {selectedBoard && (
+            <section className="cards-section" aria-label="Board Cards">
+                <NewCardForm onAddCard={addNewCard} />
+                <Cards 
+                    cards={cardsData} 
+                    onDeleteCard={deleteCard} 
+                    onLikeCard={likeCard} 
+                />
+            </section>
+        )}
+    </main>
+);
+};
+export default App;
 
 

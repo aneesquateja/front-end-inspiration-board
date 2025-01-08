@@ -1,26 +1,30 @@
 import PropTypes from "prop-types";
 import "./Board.css";
 
-const BoardList = ({ boards, onBoardSelect }) => {
+const Board = ({ boards, onBoardSelect }) => {
   return (
     <div className="board-container">
-      <h2>Boards</h2>
-      <ol className="board-list">
-        {boards.map((board) => (
-          <li
-            key={board.id}
-            onClick={() => onBoardSelect(board)}
-            style={{ cursor: "pointer", margin: "5px 0" }}
-          >
-            {board.title}
-          </li>
-        ))}
-      </ol>
+      <div className="board-header">
+        <h2>Boards</h2>
+      </div>
+      <div className="board-list-container">
+        <ul className="board-list">
+          {boards.map((board) => (
+            <li
+              key={board.id}
+              onClick={() => onBoardSelect(board)}
+              className="board-item"
+            >
+              {board.title}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
 
-BoardList.propTypes = {
+Board.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -31,4 +35,4 @@ BoardList.propTypes = {
   onBoardSelect: PropTypes.func.isRequired,
 };
 
-export default BoardList;
+export default Board;

@@ -10,7 +10,7 @@
 }
 
 .new-card-form {
-    display: fixed;
+    display: flex;
     flex-direction: column;
     gap: 1rem;
 }
