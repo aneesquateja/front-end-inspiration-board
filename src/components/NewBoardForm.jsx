@@ -40,8 +40,6 @@ const NewBoardForm = ({ onAddBoard }) => {
                     onChange={(event) => setOwner(event.target.value)}
                 />
             </div>
-            {/* </div> */}
-        {/* </form> */}
         <p>Preview: {title} - {owner}</p>
         <button type="submit">Add Board</button>
     </form>
