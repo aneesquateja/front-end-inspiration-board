@@ -21,7 +21,9 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
                             className="like-btn"
                             onClick={() => onLikeCard(card.id)}
                         >
-                            <span className="like-count">{card.likes_count}</span>
+                            {/* <span className="like-count">{card.likescount}</span> */}
+                            <span className="like-count">{card.likes || 0}</span>
+
                         </button>
                     </div>
                 </div>
