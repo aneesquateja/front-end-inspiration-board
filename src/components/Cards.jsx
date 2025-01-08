@@ -16,13 +16,12 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
                             className="delete-btn"
                             onClick={() => onDeleteCard(card.id)}
                         >
-                            Delete
                         </button>
                         <button 
                             className="like-btn"
                             onClick={() => onLikeCard(card.id)}
                         >
-                            Like ({card.likes_count})
+                            <span className="like-count">{card.likes_count}</span>
                         </button>
                     </div>
                 </div>

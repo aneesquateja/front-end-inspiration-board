@@ -22,9 +22,8 @@ const NewCardForm = ({ onAddCard }) => {
                     onChange={(event) => setMessage(event.target.value)}
                     placeholder="Type your message here..."
                 />
-                <button type="submit">Add Sticky Note</button>
+                <button type="submit">Add Card</button>
             </form>
-            {message && <p className="preview">Preview: {message}</p>}
         </div>
     );
 };
