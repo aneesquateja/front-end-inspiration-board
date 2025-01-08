@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import './NewBoardForm.css';
 
 const NewBoardForm = ({ onAddBoard }) => {
     const [title, setTitle] = useState('');
@@ -16,6 +17,7 @@ const NewBoardForm = ({ onAddBoard }) => {
     };
 
     return (
+        <div className="new-board-form-container">
         <form onSubmit={handleSubmit}>
             <h3>Create a New Board</h3>
             <div>
@@ -38,8 +40,13 @@ const NewBoardForm = ({ onAddBoard }) => {
                     onChange={(event) => setOwner(event.target.value)}
                 />
             </div>
-            <button type="submit">Add Board</button>
-        </form>
+            {/* </div> */}
+        {/* </form> */}
+        <p>Preview: {title} - {owner}</p>
+        <button type="submit">Add Board</button>
+    </form>
+    </div>
+        
     );
 };
 
