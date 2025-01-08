@@ -1,0 +1,65 @@
+.form-container {
+    background: #2d4b3e;
+    border: 20px solid #987654;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 
+        inset 0 0 50px rgba(0,0,0,0.5),
+        0 10px 20px rgba(0,0,0,0.3);
+    margin: 2rem 0;
+}
+
+.new-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.new-card-form label {
+    color: rgba(255,255,255,0.9);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.new-card-form input {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 0.8rem;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 4px;
+}
+
+.new-card-form input:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.6);
+}
+
+.new-card-form button {
+    background: #ffd700;
+    border: none;
+    padding: 1rem;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: rotate(-1deg);
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.new-card-form button:hover {
+    transform: scale(1.02) rotate(0deg);
+}
+
+.preview {
+    background: #ffd700;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 2px;
+    transform: rotate(1deg);
+    font-family: 'Permanent Marker', cursive;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
