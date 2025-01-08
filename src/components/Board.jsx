@@ -4,7 +4,7 @@ import "./Board.css";
 const BoardList = ({ boards, onBoardSelect }) => {
   return (
     <div className="board-container">
-      {/* <h2>Boards</h2> */}
+      <h2>Boards</h2>
       <ol className="board-list">
         {boards.map((board) => (
           <li

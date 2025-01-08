@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import BoardList from "./components/Board";
+import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Cards from "./components/Cards";
@@ -86,6 +86,7 @@ const App = () => {
   const likeCard = (cardId) => {
     axios.patch(`http://127.0.0.1:5000/cards/${cardId}/like`)
       .then((response) => {
+        console.log(response.data);
         setCardsData((prevCards) =>
           prevCards.map((card) =>
             card.id === cardId ? { ...card, likes: response.data.likes } : card
@@ -136,16 +137,16 @@ const App = () => {
 
   <div className="board-card-container">
     <div className="left-side-container">
-      <h2>Boards</h2>
-      <BoardList boards={boardsData} onBoardSelect={setSelectedBoard} />
+      <Board boards={boardsData} onBoardSelect={setSelectedBoard} />
     </div>
-
     {selectedBoard && (
       <div className="selected-board-container">
         <h2>Selected Board: {selectedBoard.title}</h2>
+      <div className="right-side-container">
         <p>Owner: {selectedBoard.owner}</p>
         <NewCardForm onAddCard={addNewCard} />
         <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
+      </div>
       </div>
     )}
 

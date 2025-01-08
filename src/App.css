@@ -1,47 +1,75 @@
 /* Main container to hold the overall layout */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-  gap: 20px;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "boards main forms"
+    "boards cards forms";
+  grid-template-columns: 300px 1fr 300px;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .inspirational-board-title {
-  margin-left: -900px; /* Moves the title to the left */
-  text-align: left; /* Aligns the text to the left */
+  grid-area: header;
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 1rem 0;
 }
 
 /* Left and right sections side by side */
 .board-card-container {
-  display: flex;
-  flex-direction: row; /* Arrange sections horizontally */
-  gap: 20px; /* Space between sections */
-  width: 100%;
-  justify-content: space-between; /* Push content to the edges */
+  display: contents;
 }
 
 /* Left-side (Boards) */
 .left-side-container {
-  flex: 1; /* Make it flexible */
-  max-width: 300px; /* Optional: Limit maximum width */
-  margin-top: -60px; /* Move it up */
-  margin-left: 200px; /* Move it to the right */
+  grid-area: boards;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Right-side (Form) */
 .right-side-container {
-  flex: 1; /* Allows it to take up available space */
-  max-width: 300px; /* Limits the maximum width */
-  margin-left: 300px; /* Moves it slightly to the right */
-  margin-top: 250px; /* Moves it slightly down */
+  grid-area: forms;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Selected board and cards */
 .selected-board-container {
-  flex: 2; /* Allow more space for this section */
-  min-width: 300px;
-  margin-left: 350px; /* Adjust this value to move it to the right */
+  grid-area: cards;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-areas:
+      "header header"
+      "boards forms"
+      "cards cards";
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "boards"
+      "forms"
+      "cards";
+    grid-template-columns: 1fr;
+  }
 }
 
 .delete-all-container {
@@ -51,9 +79,4 @@
   text-align: center; /* Ensures text stays centered */
   width: 100%; /* Prevents it from shrinking or disappearing */
 }
-
-
-
-
-  
 
