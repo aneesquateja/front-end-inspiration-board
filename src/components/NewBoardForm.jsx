@@ -25,7 +25,7 @@ const NewBoardForm = ({ onAddBoard }) => {
                 <input
                     id="board-title"
                     type="text"
-                    placeholder="Enter board title"
+                    placeholder=" Enter board title"
                     value={title}
                     onChange={(event) => setTitle(event.target.value)}
                 />
@@ -35,13 +35,11 @@ const NewBoardForm = ({ onAddBoard }) => {
                 <input
                     id="board-owner"
                     type="text"
-                    placeholder="Enter owner name"
+                    placeholder=" Enter owner name"
                     value={owner}
                     onChange={(event) => setOwner(event.target.value)}
                 />
             </div>
-            {/* </div> */}
-        {/* </form> */}
         <p>Preview: {title} - {owner}</p>
         <button type="submit">Add Board</button>
     </form>
