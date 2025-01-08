@@ -1,0 +1,75 @@
+/* General form container styling */
+.new-board-form-container {
+    position: fixed;   /* Fix the form relative to the viewport */
+    right: 250px;       /* Distance from the right edge */
+    top: 90px;         /* Distance from the top edge */
+    width: 300px;      /* Fixed width */
+    padding: 20px;     /* Padding around the form content */
+    background-color: #be8989;
+    border: 1px solid #0e0404;
+    box-shadow: 0 0 10px rgba(87, 164, 105, 0.1);
+    z-index: 1000;     /* Ensure form is above other content */
+    overflow: hidden;  /* Hide overflow content */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+/* Layout and form fields */
+.new-board-form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label styling */
+.new-board-form-container label {
+    margin-top: 10px;
+}
+
+/* Input field styling */
+.new-board-form-container input {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styling */
+.new-board-form-container button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-board-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .new-board-form-container {
+        width: 90%;   /* Let the form take up 90% of the screen width */
+        max-width: 300px; /* Prevent it from growing larger */
+        padding: 15px;  /* Adjust padding */
+        top: 10px;      /* Keep form at a fixed top distance */
+    }
+
+    .new-board-form-container button {
+        width: 100%;     /* Make the button full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .new-board-form-container {
+        right: 10px;     /* Slightly reduce right margin for small screens */
+        top: 20px;       /* Tighter top margin */
+        padding: 10px;   /* Less padding */
+    }
+
+    .new-board-form-container input,
+    .new-board-form-container button {
+        font-size: 14px;  /* Adjust input and button font size */
+    }
+}

@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import "./Board.css";
 
 const BoardList = ({ boards, onBoardSelect }) => {
   return (
-    <div>
-      <h2>Boards</h2>
-      <ul>
+    <div className="board-container">
+      {/* <h2>Boards</h2> */}
+      <ol className="board-list">
         {boards.map((board) => (
           <li
             key={board.id}
@@ -14,7 +15,7 @@ const BoardList = ({ boards, onBoardSelect }) => {
             {board.title}
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };

@@ -1,0 +1,16 @@
+.board-container {
+    position: fixed; /* Fixes the position of the element relative to the viewport */
+    top: 170px; /* Adjust the value to position it below the heading */
+    left: 150px; /* Adjust the value to position it from the left edge */
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+    height: 140px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+.board-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin: 0px;
+}

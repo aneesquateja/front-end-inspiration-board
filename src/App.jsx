@@ -47,6 +47,19 @@ const App = () => {
       });
   };
 
+  const deleteAllBoards = () => {
+    axios.delete('http://127.0.0.1:5000/boards')
+      .then((response) => {
+        console.log(response.data.details);
+        // Optionally, update the state to reflect the changes in the UI
+        setBoardsData([]);
+        setSelectedBoard(null);
+      })
+      .catch((error) => {
+        console.error("Error deleting all boards:", error);
+      });
+  };
+
   // Handle adding a new card
   const addNewCard = (newCard) => {
     axios.post(`http://127.0.0.1:5000/boards/${selectedBoard.id}/cards`, newCard)
@@ -85,31 +98,72 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Inspirational Board</h1>
+//     <div>
+//       <h1 className="inspirational-board-title">Inspirational Board</h1>
+//       <div className="left-side-container">
+//         <h2>Boards</h2>
+//         <BoardList boards={boardsData} onBoardSelect={setSelectedBoard} />
+//         </div>
+//         <div className="right-side-container">
+//         {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
+//         <button onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}>
+//           {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+//         </button>
+//       </div>
 
-      <div>
-        <h2>Boards</h2>
-        <BoardList boards={boardsData} onBoardSelect={setSelectedBoard} />
-        {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
-        <button onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}>
-          {isBoardFormVisible ? "Hide Board Form" : "Add New Board"}
-        </button>
-      </div>
+//       <div className="delete-all-container">
+//         <p>This is a demo! Please be gentle! <span onClick={deleteAllBoards} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>Click here</span> to delete all boards and cards!</p>
+//       </div>
       
-      {selectedBoard && (
-        <div>
-          <h2>Selected Board: {selectedBoard.title}</h2>
-          <p>Owner: {selectedBoard.owner}</p>
-          <NewCardForm onAddCard={addNewCard} />
-          <div>
-            <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
+//       {selectedBoard && (
+//         <div className="selected-board-container">
+//           <h2>Selected Board: {selectedBoard.title}</h2>
+//           <p>Owner: {selectedBoard.owner}</p>
+//           <NewCardForm onAddCard={addNewCard} />
+//           <div>
+//             <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
 
-export default App;
+// export default App;
+
+<div className="container">
+  <h1 className="inspirational-board-title">Inspirational Board</h1>
+
+  <div className="board-card-container">
+    <div className="left-side-container">
+      <h2>Boards</h2>
+      <BoardList boards={boardsData} onBoardSelect={setSelectedBoard} />
+    </div>
+
+    {selectedBoard && (
+      <div className="selected-board-container">
+        <h2>Selected Board: {selectedBoard.title}</h2>
+        <p>Owner: {selectedBoard.owner}</p>
+        <NewCardForm onAddCard={addNewCard} />
+        <Cards cards={cardsData} onDeleteCard={deleteCard} onLikeCard={likeCard} />
+      </div>
+    )}
+
+    <div className="right-side-container">
+      {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
+      <button onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}>
+        {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+      </button>
+    </div>
+  </div>
+
+  <div className="delete-all-container">
+    <p>This is a demo! Please be gentle! <span onClick={deleteAllBoards} style={{ cursor: 'pointer', textDecoration: 'underline' }}>Click here</span> to delete all boards and cards!</p>
+  </div>
+</div>
+ );
+ };
+ 
+ export default App;
+
 
