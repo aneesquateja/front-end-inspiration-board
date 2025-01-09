@@ -1,87 +1,134 @@
 .board-container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    max-height: 80vh;
+    height: 250px;  
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 3rem 2rem 2rem;
+    margin-top: 40px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    background-image: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 24px,
+            #e0e0e0 25px
+        );
+    transition: height 0.3s ease;
+}
+
+.board-container.expanded {
+    height: 400px;
+}
+
+/* Top binding strip */
+.board-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    height: 40px;
+    background: #62fcb2;
+    border-radius: 4px;
+}
+
+/* Binding holes */
+.board-container::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: -15px;
+    height: 30px;
+    background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 30px,
+        #fff 30px,
+        #fff 45px
+    );
 }
 
 .board-header {
-    padding: 1.5rem;
-    background: #fff;
-    border-bottom: 2px solid #eee;
-    position: sticky;
+    padding: 1.5rem 0;
+    position: flex;
     top: 0;
     z-index: 2;
-    flex-shrink: 0;
+    
 }
 
 .board-header h2 {
     margin: 0;
-    color: #333;
-    font-size: 1.8rem;
+    color: #e752bf;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .board-list-container {
     flex: 1;
     overflow-y: auto;
     min-height: 0;
+    padding: 0 2rem;
+    
 }
 
 .board-list {
     list-style: none;
     margin: 0;
-    padding: 1rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
 .board-item {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    padding: 0.5rem;
+    color: #333;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    line-height: 24px;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.board-list li {
-    background: #f8f9fa;
-    padding: 1.2rem;
-    border-radius: 8px;
-    border-left: 4px solid #4CAF50;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.board-list li:hover {
-    transform: translateX(5px);
-    background: #f0f0f0;
-}
-
-.toggle-form-btn {
-    margin: 1rem;
-    padding: 0.8rem;
-    background: #4CAF50;
-    color: white;
+    transition: all 0.2s ease;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    flex-shrink: 0;
+    background: transparent;
+}
+
+.board-item:hover {
+    color: #e752bf;
+    padding-left: 1.5rem;
 }
 
 .board-list::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .board-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
+    background: #fff;
+    border-left: 1px solid #e0e0e0;
 }
 
 .board-list::-webkit-scrollbar-thumb {
-    background: #ddd;
-    border-radius: 3px;
+    background: #e752bf;
+    border-radius: 4px;
+}
+
+.toggle-form-btn:hover {
+    background: #d641af;
+    transform: scale(1.02);
+}
+
+.no-boards-message {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-family: 'Permanent Marker', cursive;
+    font-style: italic;
+}
+
+.expanded {
+    height: 100%;
+    min-height: 400px;
 }

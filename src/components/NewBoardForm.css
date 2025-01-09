@@ -2,8 +2,9 @@
 .new-board-form-container {
     position: relative;
     width: 300px;
+    height: 300px; 
     padding: 30px;
-    background: #f4e4bc;
+    background: #82f9f9;
     background-image: 
         repeating-linear-gradient(
             to bottom,
@@ -12,14 +13,14 @@
             rgba(0,0,0,0.05) 24px,
             rgba(0,0,0,0.05) 25px
         );
-    border: 1px solid #d4b483;
+    border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 
         2px 3px 20px rgba(0,0,0,0.2),
         0 0 60px rgba(0,0,0,0.1) inset;
-    transform: rotate(-1deg);
+    transform: rotate(-2deg);
     z-index: 1000;     /* Ensure form is above other content */
     overflow: hidden;  /* Hide overflow content */
-    border-radius: 8px; /* Optional: adds rounded corners */
+    border-radius: 2px; /* Optional: adds rounded corners */
 }
 
 .new-board-form-container::before {
@@ -51,12 +52,11 @@
 
 /* Input field styling */
 .new-board-form-container input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px dashed #8b7355;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0,0,0,0.1);
     padding: 8px 0;
     font-family: 'Noto Serif', serif;
-    color: #2c1810;
+    color: #333;
     font-size: 1rem;
     margin-top: 5px;
 }
@@ -69,8 +69,8 @@
 /* Button styling */
 .new-board-form-container button {
     margin-top: 1.5rem;
-    background: #8b7355;
-    color: #f4e4bc;
+    background: #ebd5f0;
+    color: #333;
     border: none;
     padding: 10px;
     font-family: 'Playfair Display', serif;
@@ -80,7 +80,7 @@
 }
 
 .new-board-form-container button:hover {
-    background: #5c4b37;
+    background: #e989c4;
     transform: rotate(0deg);
 }
 
@@ -109,4 +109,34 @@
     .new-board-form-container button {
         font-size: 14px;  /* Adjust input and button font size */
     }
+}
+
+.form-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+    color: #111011;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-label {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.form-input {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1rem;
+}
+
+.form-input::placeholder {
+    font-family: 'Permanent Marker', cursive;
+    opacity: 0.6;
+}
+
+.toggle-form-btn,
+.submit-btn {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
 }

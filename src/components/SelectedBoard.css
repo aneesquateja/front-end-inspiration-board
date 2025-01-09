@@ -1,10 +1,44 @@
 .selected-board {
-    background: #fff;
     position: relative;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    font-family: 'Playfair Display', serif;
+    height: 350px;  
+    background: hsl(295, 65%, 82%);
+    background-image: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 24px,
+            rgba(0,0,0,0.05) 24px,
+            rgba(0,0,0,0.05) 25px
+        );
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 
+        0 5px 10px rgba(0,0,0,0.15),
+        0 -2px 6px rgba(0,0,0,0.025);
+    transform: rotate(-1deg);
+    border-radius: 2px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.selected-board:empty::before {
+    content: 'No board selected';
+    color: #666;
+    font-family: 'Permanent Marker', cursive;
+    font-style: italic;
+}
+
+.selected-board::before {
+    content: '📌';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 2;
 }
 
 .selected-board h2 {
@@ -19,26 +53,54 @@
 .board-header {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
+    border-bottom: 2px dashed rgba(0,0,0,0.1);
 }
 
 .board-header h2 {
     font-size: 2rem;
     margin: 0;
     color: #333;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.board-title h2 {
+    color: #333;
 }
 
 .owner {
-    color: #666;
+    color: #333;
     font-style: italic;
     margin-top: 0.5rem;
+    opacity: 0.8;
 }
 
 .board-details {
-    color: #888;
-    font-size: 0.9rem;
+    background: rgba(255,255,255,0.7);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
 }
 
 .board-id {
     margin: 0;
     font-family: monospace;
+}
+
+.delete-selected-btn {
+    background: hsl(295, 63%, 70%);
+    border: none;
+    padding: 1rem;
+    font-family: 'Permanent Marker', cursive;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: rotate(-1deg);
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    margin-top: 1rem;
+}
+
+.delete-selected-btn:hover {
+    transform: scale(1.02) rotate(0deg);
+    background: #ff8080;
 }

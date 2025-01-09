@@ -1,6 +1,6 @@
 .form-container {
-    background: #2d4b3e;
-    border: 20px solid #987654;
+    background: #e752bf;
+    border: 1px solid rgba(0,0,0,0.1);
     padding: 2rem;
     border-radius: 5px;
     box-shadow: 
@@ -16,28 +16,29 @@
 }
 
 .new-card-form label {
-    color: rgba(255,255,255,0.9);
+    color: #333;
     font-family: 'Permanent Marker', cursive;
     font-size: 1.5rem;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .new-card-form input {
-    background: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0.1);
     padding: 0.8rem;
-    color: white;
+    color: #333;
     font-size: 1.2rem;
     border-radius: 4px;
 }
 
 .new-card-form input:focus {
     outline: none;
-    border-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.9);
+    border-color: #ff9999;
 }
 
 .new-card-form button {
-    background: #ffd700;
+    background: #ff9999;
     border: none;
     padding: 1rem;
     font-family: 'Permanent Marker', cursive;
@@ -52,14 +53,5 @@
 
 .new-card-form button:hover {
     transform: scale(1.02) rotate(0deg);
-}
-
-.preview {
-    background: #ffd700;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 2px;
-    transform: rotate(1deg);
-    font-family: 'Permanent Marker', cursive;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    background: #ff8080;
 }

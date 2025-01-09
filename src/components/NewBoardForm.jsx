@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './NewBoardForm.css';
 
-const NewBoardForm = ({ onAddBoard }) => {
+const NewBoardForm = ({ onAddBoard, onToggleForm }) => {
     const [title, setTitle] = useState('');
     const [owner, setOwner] = useState('');
 
@@ -18,38 +18,53 @@ const NewBoardForm = ({ onAddBoard }) => {
 
     return (
         <div className="new-board-form-container">
-        <form onSubmit={handleSubmit}>
-            <h3>Create a New Board</h3>
-            <div>
-                <label htmlFor="board-title">Title</label>
-                <input
-                    id="board-title"
-                    type="text"
-                    placeholder=" Enter board title"
-                    value={title}
-                    onChange={(event) => setTitle(event.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="board-owner">Owner</label>
-                <input
-                    id="board-owner"
-                    type="text"
-                    placeholder=" Enter owner name"
-                    value={owner}
-                    onChange={(event) => setOwner(event.target.value)}
-                />
-            </div>
-        <p>Preview: {title} - {owner}</p>
-        <button type="submit">Add Board</button>
-    </form>
-    </div>
-        
+            <form onSubmit={handleSubmit}>
+                <h3 className="form-title">Create a New Board</h3>
+                <div className="form-fields">
+                    <label htmlFor="board-title" className="form-label">Title</label>
+                    <input
+                        id="board-title"
+                        type="text"
+                        placeholder="Enter board title"
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        className="form-input"
+                    />
+                    <div>
+                    <label htmlFor="board-owner" className="form-label">Owner</label>
+                    <input
+                        id="board-owner"
+                        type="text"
+                        placeholder="Enter owner name"
+                        value={owner}
+                        onChange={(event) => setOwner(event.target.value)}
+                        className="form-input"
+                    />
+                    </div>
+                </div>
+                <div className="button-container">
+                    <button 
+                        type="button"
+                        onClick={onToggleForm}
+                        className="toggle-form-btn"
+                    >
+                        Hide Form
+                    </button>
+                    <button 
+                        type="submit"
+                        className="submit-btn"
+                    >
+                        Add Board
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 };
 
 NewBoardForm.propTypes = {
     onAddBoard: PropTypes.func.isRequired,
+    onToggleForm: PropTypes.func.isRequired,
 };  
 
 export default NewBoardForm;
