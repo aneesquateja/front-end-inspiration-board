@@ -124,7 +124,7 @@ const App = () => {
                 onBoardSelect={setSelectedBoard}
                 isFormVisible={isBoardFormVisible}
             />
-            <div className="board-actions">
+            <div>
                 
                 {boardsData.length > 0 && (
                     <button 

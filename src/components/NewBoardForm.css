@@ -1,4 +1,3 @@
-/* General form container styling */
 .new-board-form-container {
     position: relative;
     width: 300px;
@@ -18,9 +17,9 @@
         2px 3px 20px rgba(0,0,0,0.2),
         0 0 60px rgba(0,0,0,0.1) inset;
     transform: rotate(-2deg);
-    z-index: 1000;     /* Ensure form is above other content */
-    overflow: hidden;  /* Hide overflow content */
-    border-radius: 2px; /* Optional: adds rounded corners */
+    z-index: 1000;
+    overflow: hidden;
+    border-radius: 2px;
 }
 
 .new-board-form-container::before {
@@ -34,83 +33,14 @@
     pointer-events: none;
 }
 
-/* Layout and form fields */
+/* Form Layout */
 .new-board-form-container form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-/* Label styling */
-.new-board-form-container label {
-    font-family: 'Playfair Display', serif;
-    color: #5c4b37;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    margin-top: 10px;
-}
-
-/* Input field styling */
-.new-board-form-container input {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 8px 0;
-    font-family: 'Noto Serif', serif;
-    color: #333;
-    font-size: 1rem;
-    margin-top: 5px;
-}
-
-.new-board-form-container input:focus {
-    outline: none;
-    border-bottom: 1px solid #5c4b37;
-}
-
-/* Button styling */
-.new-board-form-container button {
-    margin-top: 1.5rem;
-    background: #ebd5f0;
-    color: #333;
-    border: none;
-    padding: 10px;
-    font-family: 'Playfair Display', serif;
-    cursor: pointer;
-    transform: rotate(1deg);
-    transition: all 0.3s ease;
-}
-
-.new-board-form-container button:hover {
-    background: #e989c4;
-    transform: rotate(0deg);
-}
-
-/* Media queries for smaller screens */
-@media (max-width: 768px) {
-    .new-board-form-container {
-        width: 90%;   /* Let the form take up 90% of the screen width */
-        max-width: 300px; /* Prevent it from growing larger */
-        padding: 15px;  /* Adjust padding */
-        top: 10px;      /* Keep form at a fixed top distance */
-    }
-
-    .new-board-form-container button {
-        width: 100%;     /* Make the button full width on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .new-board-form-container {
-        right: 10px;     /* Slightly reduce right margin for small screens */
-        top: 20px;       /* Tighter top margin */
-        padding: 10px;   /* Less padding */
-    }
-
-    .new-board-form-container input,
-    .new-board-form-container button {
-        font-size: 14px;  /* Adjust input and button font size */
-    }
-}
-
+/* Typography */
 .form-title {
     font-family: 'Permanent Marker', cursive;
     font-size: 1.5rem;
@@ -119,24 +49,85 @@
     text-align: center;
 }
 
-.form-label {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.form-input {
-    font-family: 'Permanent Marker', cursive;
-    font-size: 1rem;
-}
-
-.form-input::placeholder {
-    font-family: 'Permanent Marker', cursive;
-    opacity: 0.6;
-}
-
+.form-label,
+.form-input,
 .toggle-form-btn,
 .submit-btn {
     font-family: 'Permanent Marker', cursive;
+}
+
+/* Form Elements */
+.form-label {
     font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    margin-top: 10px;
+}
+
+.form-input {
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 8px 0;
+    color: #333;
+    margin-top: 5px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-bottom: 1px solid #5c4b37;
+}
+
+.form-input::placeholder {
+    opacity: 0.6;
+}
+
+/* Buttons */
+.toggle-form-btn,
+.submit-btn {
+        background: #e752bf;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        margin: 1rem;
+        border-radius: 4px;
+        font-family: 'Permanent Marker', cursive;
+        cursor: pointer;
+        transition: all 0.2s ease;
+}
+
+
+.toggle-form-btn:hover,
+.submit-btn:hover {
+    background: #e989c4;
+    transform: rotate(0deg);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .new-board-form-container {
+        width: 90%;
+        max-width: 300px;
+        padding: 15px;
+        top: 10px;
+    }
+
+    .toggle-form-btn,
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-board-form-container {
+        right: 10px;
+        top: 20px;
+        padding: 10px;
+    }
+
+    .form-input,
+    .toggle-form-btn,
+    .submit-btn {
+        font-size: 14px;
+    }
 }

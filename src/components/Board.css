@@ -113,11 +113,6 @@
     border-radius: 4px;
 }
 
-.toggle-form-btn:hover {
-    background: #d641af;
-    transform: scale(1.02);
-}
-
 .no-boards-message {
     flex: 1;
     display: flex;
@@ -126,9 +121,4 @@
     color: #999;
     font-family: 'Permanent Marker', cursive;
     font-style: italic;
-}
-
-.expanded {
-    height: 100%;
-    min-height: 400px;
 }

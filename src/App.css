@@ -6,7 +6,7 @@
     "boards selected newboard"
     "cards cards cards";
   grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr) minmax(300px, 1fr);
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto;
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
@@ -68,14 +68,7 @@
   gap: 1rem;
 }
 
-/* Selected board and cards */
-.selected-board-container {
-  grid-area: cards;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+
 
 .delete-all-container {
   align-self: center; /* Center the item within the parent container */
@@ -93,17 +86,6 @@
   grid-area: cards;
 }
 
-.toggle-form-btn {
-  background: #e752bf;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  margin: 1rem;
-  border-radius: 4px;
-  font-family: 'Permanent Marker', cursive;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
 
 .toggle-form-btn:hover {
   background: #9238ad;
