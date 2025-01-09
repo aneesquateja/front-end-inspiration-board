@@ -7,6 +7,8 @@ import Cards from "./components/Cards";
 import SelectedBoard from "./components/SelectedBoard";
 import "./App.css";
 
+const kbaseURL = 'http://127.0.0.1:5000'; // I can Replace with your deployed API URL if needed
+
 const App = () => {
   const [boardsData, setBoardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
@@ -15,7 +17,7 @@ const App = () => {
 
   // Fetch boards from the backend
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/boards")
+    axios.get(`${kbaseURL}/boards`)
       .then((response) => {
         setBoardsData(response.data);
       })
@@ -27,7 +29,7 @@ const App = () => {
   // Fetch cards for the selected board
   useEffect(() => {
     if (selectedBoard) {
-      axios.get(`http://127.0.0.1:5000/boards/${selectedBoard.id}/cards`)
+      axios.get(`${kbaseURL}/boards/${selectedBoard.id}/cards`)
         .then((response) => {
           setCardsData(response.data);
         })
@@ -39,7 +41,7 @@ const App = () => {
 
   // Handle adding a new board
   const addNewBoard = (newBoard) => {
-    axios.post("http://127.0.0.1:5000/boards", newBoard)
+    axios.post(`${kbaseURL}/boards`, newBoard)
       .then((response) => {
         setBoardsData((prevBoards) => [...prevBoards, response.data]);
       })
@@ -49,7 +51,7 @@ const App = () => {
   };
 
   const deleteAllBoards = () => {
-    axios.delete('http://127.0.0.1:5000/boards')
+    axios.delete(`${kbaseURL}/boards`)
       .then((response) => {
         console.log(response.data.details);
         // Optionally, update the state to reflect the changes in the UI
@@ -63,7 +65,7 @@ const App = () => {
 
   // Add deleteBoard function
   const deleteBoard = (boardId) => {
-    axios.delete(`http://127.0.0.1:5000/boards/${boardId}`)
+    axios.delete(`${kbaseURL}/boards/${boardId}`)
       .then(() => {
         setBoardsData((prevBoards) => prevBoards.filter((board) => board.id !== boardId));
         setSelectedBoard(null);
@@ -76,7 +78,7 @@ const App = () => {
 
   // Handle adding a new card
   const addNewCard = (newCard) => {
-    axios.post(`http://127.0.0.1:5000/boards/${selectedBoard.id}/cards`, newCard)
+    axios.post(`${kbaseURL}/boards/${selectedBoard.id}/cards`, newCard)
       .then((response) => {
         setCardsData((prevCards) => [...prevCards, response.data]);
       })
@@ -87,7 +89,7 @@ const App = () => {
 
   // Handle deleting a card
   const deleteCard = (cardId) => {
-    axios.delete(`http://127.0.0.1:5000/cards/${cardId}`)
+    axios.delete(`${kbaseURL}/cards/${cardId}`)
       .then(() => {
         setCardsData((prevCards) => prevCards.filter((card) => card.id !== cardId));
       })
@@ -98,7 +100,7 @@ const App = () => {
 
   // Handle liking a card
   const likeCard = (cardId) => {
-    axios.patch(`http://127.0.0.1:5000/cards/${cardId}/like`)
+    axios.patch(`${kbaseURL}/cards/${cardId}/like`)
       .then((response) => {
         console.log(response.data);
         setCardsData((prevCards) =>
