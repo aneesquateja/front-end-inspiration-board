@@ -4,11 +4,20 @@ import './NewCardForm.css';
 
 const NewCardForm = ({ onAddCard }) => {
     const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onAddCard({ message });
+        const trimmedMessage = message.trim();
+        
+        if (!trimmedMessage) {
+            setError("Please enter a message");
+            return;
+        }
+        
+        onAddCard({ message: trimmedMessage });
         setMessage("");
+        setError("");
     };
 
     return (
@@ -19,14 +28,20 @@ const NewCardForm = ({ onAddCard }) => {
                     type="text"
                     id="message"
                     value={message}
-                    onChange={(event) => setMessage(event.target.value)}
+                    onChange={(event) => {
+                        setMessage(event.target.value);
+                        setError("");
+                    }}
                     placeholder="Type your message here..."
+                    className={error ? "error" : ""}
                 />
+                {error && <span className="error-message">{error}</span>}
                 <button type="submit">Add Card</button>
             </form>
         </div>
     );
 };
+
 NewCardForm.propTypes = {
     onAddCard: PropTypes.func.isRequired,
 };
