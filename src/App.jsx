@@ -61,6 +61,19 @@ const App = () => {
       });
   };
 
+  // Add deleteBoard function
+  const deleteBoard = (boardId) => {
+    axios.delete(`http://127.0.0.1:5000/boards/${boardId}`)
+      .then(() => {
+        setBoardsData((prevBoards) => prevBoards.filter((board) => board.id !== boardId));
+        setSelectedBoard(null);
+        setCardsData([]);
+      })
+      .catch((error) => {
+        console.error("Error deleting board:", error);
+      });
+  };
+
   // Handle adding a new card
   const addNewCard = (newCard) => {
     axios.post(`http://127.0.0.1:5000/boards/${selectedBoard.id}/cards`, newCard)
@@ -100,21 +113,15 @@ const App = () => {
   };
 
   return (
-    <main className="container">
-        <h1 className="inspirational-board-title">Inspirational Board</h1>
+    <div className="container">
+        <h1 className="inspirational-board-title">Dream Crafters Inspirational Board</h1>
         
-        <section className="left-side-container" aria-label="Board List">
+        <section className="left-side-container">
             <Board 
                 boards={boardsData} 
                 onBoardSelect={setSelectedBoard} 
             />
             <div className="board-actions">
-                <button 
-                    className="toggle-form-btn"
-                    onClick={() => setIsBoardFormVisible(!isBoardFormVisible)}
-                >
-                    {isBoardFormVisible ? "Hide Board Form" : "Add New Board"}
-                </button>
                 
                 {boardsData.length > 0 && (
                     <button 
@@ -129,11 +136,29 @@ const App = () => {
         </section>
 
         <section className="center-container" aria-label="Selected Board">
-            <SelectedBoard board={selectedBoard} />
+            <SelectedBoard 
+                board={selectedBoard} 
+                onDeleteBoard={deleteBoard}
+            />
         </section>
 
-        <section className="right-side-container" aria-label="New Board Form">
-            {isBoardFormVisible && <NewBoardForm onAddBoard={addNewBoard} />}
+        <section className="right-side-container">
+            {isBoardFormVisible && (
+                <NewBoardForm 
+                    onAddBoard={addNewBoard} 
+                    onToggleForm={() => setIsBoardFormVisible(false)}
+                />
+            )}
+            <div className="board-actions">
+                {!isBoardFormVisible && (
+                    <button 
+                        className="toggle-form-btn"
+                        onClick={() => setIsBoardFormVisible(true)}
+                    >
+                        Add New Board
+                    </button>
+                )}
+                </div>
         </section>
 
         {selectedBoard && (
@@ -146,7 +171,7 @@ const App = () => {
                 />
             </section>
         )}
-    </main>
+    </div>
 );
 };
 export default App;
