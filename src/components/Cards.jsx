@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Cards.css';
 
+const kbaseURL = 'https://back-end-inspiration-board-wy36.onrender.com';
+
 const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
     const [cardLikes, setCardLikes] = useState({});
 
@@ -10,7 +12,7 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
         const fetchLikes = async () => {
             try {
                 const promises = cards.map(card => 
-                    axios.get(`http://127.0.0.1:5000/cards/${card.id}`)
+                    axios.get(`${kbaseURL}/cards/${card.id}`)
                 );
                 const responses = await Promise.all(promises);
                 const likes = {};
@@ -31,7 +33,7 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
     const handleLike = async (cardId) => {
         await onLikeCard(cardId);
         try {
-            const response = await axios.get(`http://127.0.0.1:5000/cards/${cardId}`);
+            const response = await axios.get(`${kbaseURL}/cards/${cardId}`);
             setCardLikes(prev => ({
                 ...prev,
                 [cardId]: response.data.likes
