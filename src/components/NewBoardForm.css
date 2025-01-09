@@ -1,7 +1,7 @@
 .new-board-form-container {
     position: relative;
     width: 300px;
-    height: 300px; 
+    height: 350px; 
     padding: 30px;
     background: #82f9f9;
     background-image: 
@@ -96,11 +96,10 @@
         transition: all 0.2s ease;
 }
 
-
 .toggle-form-btn:hover,
 .submit-btn:hover {
-    background: #e989c4;
-    transform: rotate(0deg);
+    background: #9238ad;
+    transform: scale(1.02) rotate(0deg);
 }
 
 /* Media Queries */

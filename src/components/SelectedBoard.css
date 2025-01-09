@@ -1,6 +1,6 @@
 .selected-board {
     position: relative;
-    height: 350px;  
+    height: 250px;  
     background: hsl(295, 65%, 82%);
     background-image: 
         repeating-linear-gradient(
@@ -74,18 +74,6 @@
     opacity: 0.8;
 }
 
-.board-details {
-    background: rgba(255,255,255,0.7);
-    padding: 1rem;
-    border-radius: 4px;
-    margin-top: 1rem;
-}
-
-.board-id {
-    margin: 0;
-    font-family: monospace;
-}
-
 .delete-selected-btn {
     background: hsl(295, 63%, 70%);
     border: none;
@@ -102,5 +90,5 @@
 
 .delete-selected-btn:hover {
     transform: scale(1.02) rotate(0deg);
-    background: #ff8080;
+    background: #e752bf;
 }

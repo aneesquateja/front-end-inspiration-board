@@ -89,5 +89,6 @@
 
 .toggle-form-btn:hover {
   background: #9238ad;
+  transform: scale(1.02) rotate(0deg);
 }
 
