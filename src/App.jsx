@@ -105,7 +105,7 @@ const App = () => {
         console.log(response.data);
         setCardsData((prevCards) =>
           prevCards.map((card) =>
-            card.id === cardId ? { ...card, likes: response.data.likes } : card
+            card.id === cardId ? { ...card, likes: response.data.card.likes } : card
           )
         );
       })
@@ -121,7 +121,8 @@ const App = () => {
         <section className="left-side-container">
             <Board 
                 boards={boardsData} 
-                onBoardSelect={setSelectedBoard} 
+                onBoardSelect={setSelectedBoard}
+                isFormVisible={isBoardFormVisible}
             />
             <div className="board-actions">
                 

@@ -50,17 +50,6 @@
     right: 1rem;
 }
 
-.delete-btn, .like-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0.7rem;  /* Increased from 0.5rem */
-    font-size: 1.5rem;  /* Increased from 1.2rem */
-    transition: transform 0.2s ease;
-}
-
 .delete-btn:hover, .like-btn:hover {
     opacity: 1;
 }
@@ -104,11 +93,11 @@
 
 .like-btn::before {
     content: '💖';
-    font-size: 1.5rem;  /* Increased size */
+    font-size: 1.5rem;  
 }
 
 .like-count {
-    font-size: 1.2rem;  /* Adjusted for balance */
+    font-size: 1.2rem;  
     color: #666;
 }
 
