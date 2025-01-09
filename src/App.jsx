@@ -7,7 +7,7 @@ import Cards from "./components/Cards";
 import SelectedBoard from "./components/SelectedBoard";
 import "./App.css";
 
-const kbaseURL = 'http://127.0.0.1:5000'; // I can Replace with your deployed API URL if needed
+const kbaseURL = 'https://back-end-inspiration-board-wy36.onrender.com'; // I can Replace with your deployed API URL if needed
 
 const App = () => {
   const [boardsData, setBoardsData] = useState([]);
