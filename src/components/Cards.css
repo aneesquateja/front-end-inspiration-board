@@ -44,15 +44,12 @@
 
 .card-actions {
     display: flex;
-    gap: 0.2rem;  /* Reduced from 0.5rem */
+    gap: 0.2rem;  
     position: absolute;
     bottom: 1rem;
     right: 1rem;
 }
 
-.delete-btn:hover, .like-btn:hover {
-    opacity: 1;
-}
 
 .delete-btn {
     background: none;
@@ -66,26 +63,26 @@
     transition: transform 0.2s ease;
 }
 
+.delete-btn:hover .like-btn:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
 .delete-btn::before {
     content: '🗑️';
-    font-size: 1.5rem;  /* Increased size */
+    font-size: 1.5rem; 
 }
 
-.delete-btn:hover {
-    transform: scale(1.1);
-}
 
-.delete-btn:active {
+.delete-btn:active .like-btn:active {
     transform: scale(0.9);
 }
 
 .like-btn {
     background: none;
-    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     padding: 0.5rem;
     font-size: 1.2rem;
     transition: transform 0.2s ease;
@@ -96,22 +93,6 @@
     font-size: 1.5rem;  
 }
 
-.like-count {
-    font-size: 1.2rem;  
-    color: #666;
-}
-
-.like-btn:hover {
-    transform: scale(1.1);
-}
-
-.like-btn:active {
-    transform: scale(0.9);
-}
-
-.delete-btn:hover {
-    opacity: 1;
-}
 
 .no-cards {
     text-align: center;

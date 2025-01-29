@@ -20,7 +20,6 @@ const Cards = ({ cards = [], onDeleteCard, onLikeCard }) => {
                         <button 
                             className="like-btn"
                             onClick={() => onLikeCard(card.id)}
-        
                         >
                             {card.likes}  
                         </button>
